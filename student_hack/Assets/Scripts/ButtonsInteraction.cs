@@ -49,4 +49,28 @@ public class ButtonsInteraction : MonoBehaviour
         pressAudio.SetActive(true);
         SceneManager.LoadScene(1);
     }
+
+    public void DeprButtonPressed()
+    {
+        Debug.Log("Load scene 2");
+        mainAudio.SetActive(false);
+        pressAudio.SetActive(true);
+        SceneManager.LoadScene(2);
+    }
+
+    public void PanicButtonPressed()
+    {
+        Debug.Log("Load scene 3");
+        mainAudio.SetActive(false);
+        pressAudio.SetActive(true);
+        //SceneManager.LoadScene(3);
+    }
+
+    public void ExitButtonPressed()
+    {
+        Debug.Log("Load scene 4");
+        mainAudio.SetActive(false);
+        pressAudio.SetActive(true);
+        Application.Quit();
+    }
 }

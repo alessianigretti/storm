@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public GameObject[] thunderSounds;
     public GameObject lightObj;
     private string url = "http://cc427ea4.ngrok.io/api/public/rate";
-    private int frameCount;
     
     public IEnumerator GetUrl()
     {
@@ -31,13 +30,7 @@ public class PlayerController : MonoBehaviour
         while (temp != "\"");
 
         string finalConcat = concat.Substring(0, concat.Length - 1);
-        try
-        {
-            speed = float.Parse(finalConcat, CultureInfo.InvariantCulture.NumberFormat);
-        } catch(Exception e)
-        {
-            Debug.Log(e);
-        }
+        speed = float.Parse(finalConcat, CultureInfo.InvariantCulture.NumberFormat);
     }
 
     void Start()
@@ -73,6 +66,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Debug.Log(speed);
+
         if (speed < 80)
         {
             velocity = 0.1f;
@@ -100,7 +94,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            this.transform.position += this.transform.forward * velocity;
+            if (speed > 0)
+                this.transform.position += this.transform.forward * velocity;
         }
     }
 
