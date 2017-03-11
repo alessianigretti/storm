@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonsInteraction : MonoBehaviour
 {
     public GameObject anx, depr, panic, exit;
     public GameObject mainAudio, hoverAudio, pressAudio;
+    public GameObject canvas, mainMenu;
 
     public void HighlightAnx()
     {
@@ -42,8 +44,9 @@ public class ButtonsInteraction : MonoBehaviour
 
     public void AnxButtonPressed()
     {
-        Debug.Log("jdisjj");
+        Debug.Log("Load scene 1");
         mainAudio.SetActive(false);
         pressAudio.SetActive(true);
+        SceneManager.LoadScene(1);
     }
 }
