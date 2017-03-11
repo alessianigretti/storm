@@ -8,7 +8,7 @@ public class AnxLevelManager : MonoBehaviour
 
     void Update()
     {
-        if (mainCamera.position.z > 50f)
+        if (mainCamera.position.z > 200f)
         {
             SceneManager.LoadScene(0);
         }
