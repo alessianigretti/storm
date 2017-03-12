@@ -3,13 +3,14 @@ using System.Collections;
 using System.Globalization;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeprPlayerController : MonoBehaviour
 {
     public GameObject mainCamera;
     public GameObject target;
     private string url = "http://cc427ea4.ngrok.io/api/public/rate";
-    public float speed;
+    private float speed;
     public float maxDistance;
     private int frameCount = 0;
     private Vector3 oldScale;
@@ -17,6 +18,8 @@ public class DeprPlayerController : MonoBehaviour
     private Vector3 newScale2 = new Vector3(2, 2, 2);
     private Vector3 newScale3 = new Vector3(3, 3, 3);
     private Vector3 newScale4 = new Vector3(4, 4, 4);
+    public GameObject audioS;
+    public Text heartrate;
 
     public IEnumerator GetUrl()
     {
@@ -48,21 +51,25 @@ public class DeprPlayerController : MonoBehaviour
         {
             target.GetComponent<Animator>().speed = 1f;
             target.transform.localScale = newScale1;
+            audioS.GetComponent<AudioSource>().pitch = 1f;
         }
         else if (speed >= 80 && speed < 90)
         {
             target.GetComponent<Animator>().speed = 2f;
             target.transform.localScale = newScale2;
+            audioS.GetComponent<AudioSource>().pitch = 1.5f;
         }
         else if (speed >= 90 && speed < 100)
         {
             target.GetComponent<Animator>().speed = 4f;
             target.transform.localScale = newScale3;
+            audioS.GetComponent<AudioSource>().pitch = 2f;
         }
         else if (speed >= 100)
         {
             target.GetComponent<Animator>().speed = 5f;
             target.transform.localScale = newScale4;
+            audioS.GetComponent<AudioSource>().pitch = 3f;
         }
 
         StartCoroutine(CallWeb());
@@ -89,12 +96,14 @@ public class DeprPlayerController : MonoBehaviour
         {
             mainCamera.transform.position += -mainCamera.transform.right * 0.1f;
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.Escape))
         {
             BackToMenu();
         }
 
         mainCamera.transform.LookAt(target.transform);
+
+        heartrate.text = speed.ToString();
     }
 
     IEnumerator CallWeb()

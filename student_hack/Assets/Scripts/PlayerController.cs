@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Globalization;
 using System;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] thunderSounds;
     public GameObject lightObj;
     private string url = "http://cc427ea4.ngrok.io/api/public/rate";
+    public Text heartrate;
     
     public IEnumerator GetUrl()
     {
@@ -97,6 +99,8 @@ public class PlayerController : MonoBehaviour
             if (speed > 0)
                 this.transform.position += this.transform.forward * velocity;
         }
+
+        heartrate.text = speed.ToString();
     }
 
     IEnumerator PlayThenWait(float time)

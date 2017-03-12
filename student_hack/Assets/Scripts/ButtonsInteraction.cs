@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsInteraction : MonoBehaviour
 {
-    public GameObject anx, depr, panic, exit;
+    public GameObject anx, depr, exit;
     public GameObject mainAudio, hoverAudio, pressAudio;
     public GameObject canvas, mainMenu;
 
@@ -21,12 +21,6 @@ public class ButtonsInteraction : MonoBehaviour
         hoverAudio.SetActive(true);
     }
 
-    public void HighlightPanic()
-    {
-        panic.SetActive(true);
-        hoverAudio.SetActive(true);
-    }
-
     public void HighlightExit()
     {
         exit.SetActive(true);
@@ -37,7 +31,6 @@ public class ButtonsInteraction : MonoBehaviour
     {
         anx.SetActive(false);
         depr.SetActive(false);
-        panic.SetActive(false);
         exit.SetActive(false);
         hoverAudio.SetActive(false);
     }
@@ -58,17 +51,9 @@ public class ButtonsInteraction : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    public void PanicButtonPressed()
-    {
-        Debug.Log("Load scene 3");
-        mainAudio.SetActive(false);
-        pressAudio.SetActive(true);
-        //SceneManager.LoadScene(3);
-    }
-
     public void ExitButtonPressed()
     {
-        Debug.Log("Load scene 4");
+        Debug.Log("Application Quit");
         mainAudio.SetActive(false);
         pressAudio.SetActive(true);
         Application.Quit();
