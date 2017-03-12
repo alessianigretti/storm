@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/main.unity
+- path: Assets/Scenes/scene2_depression.unity
   isLoaded: 1
   isActive: 1
